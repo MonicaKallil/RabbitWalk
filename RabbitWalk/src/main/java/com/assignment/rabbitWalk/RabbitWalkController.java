@@ -37,8 +37,7 @@ public class RabbitWalkController {
                 
 				if(playGround[row][column]==0) {
 					continue outerLoop;
-				}
-				  if(playGround[row][column]==1)
+				}else if(playGround[row][column]==1)
 				{	
 					  validBlockCount++;
 					  presentRow=row;
@@ -53,6 +52,8 @@ public class RabbitWalkController {
 						
 				}
 					previousRow=presentRow;
+				}else {
+					return "Invalid cell";
 				}
         }
 
