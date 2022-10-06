@@ -11,11 +11,11 @@ public class RabbitWalkController {
 	public String getDestinationPath() throws Exception {
 		
 		String destinationPath="";
-	     /*   int playGround[][] = { { 1, 0, 0, 0 },
+	        int playGround[][] = { { 1, 0, 0, 0 },
 	                         { 1, 1, 0, 1 },
 	                         { 0, 1, 0, 0 },
-	                         { 1, 1, 1, 1 } };*/
-	        int playGround[][] = { { 1, 1, 0, 0 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, { 0, 1, 0, 1 } };
+	                         { 1, 1, 1, 1 } };
+	      /*  int playGround[][] = { { 1, 1, 0, 0 }, { 0, 1, 0, 0 }, { 0, 1, 1, 0 }, { 0, 1, 0, 1 } };*/
 
 	        destinationPath= findPath(playGround);
 	
@@ -32,8 +32,9 @@ public class RabbitWalkController {
 		int presentColumn=0;
 		int validBlockCount=0;
 		
-		if(playGround[playGroundSize-1][playGroundSize-1]==0 || (playGround[playGroundSize-2][playGroundSize-1]==0 && playGround[playGroundSize-1][playGroundSize-2]==0)) {
-			return "Rabbit will not be able to reach destination as the path is blocked";
+
+		if((playGround[0][0]==0 || (playGround[1][0]==0 && playGround[0][1]==0))||(playGround[playGroundSize-1][playGroundSize-1]==0 || (playGround[playGroundSize-2][playGroundSize-1]==0 && playGround[playGroundSize-1][playGroundSize-2]==0))) {
+			return "Rabbit will not be able to reach destination as the path is blocked.";
 		}else {
 		outerLoop:
 		for (int row = 0; row < playGroundSize; row++) {
@@ -63,7 +64,7 @@ public class RabbitWalkController {
 					  
 					
 				}else {
-					return "Invalid cell";
+					return "Invalid cell present in the playGround, could not determine the path.";
 				}
         }
 
